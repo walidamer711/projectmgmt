@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+    {{ form.media }}
+
+    <form method="post">{% csrf_token %}
+        {% bootstrap_form form %}
+
+        <input type="submit" value="Save">
+        <input type="submit" formnovalidate name="cancel" value="Cancel">
+
+    </form>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  nginx:
+    restart: always
+    build: .
+    ports:
+      - 1337:80
+    volumes:
+      - DataVolume1:/code/staticfiles
+    external_links:
+      - projectmgmt_web_1:site1
+
+networks:
+  default:
+    external:
+      name: projectmgmt_default
+
+volumes:
+  DataVolume1:
+    external: true

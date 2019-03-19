@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3'
 
 services:
   db:
@@ -10,20 +10,13 @@ services:
     command: gunicorn projectmgmt.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/code
-      - static_volume:/code/staticfiles
+      - DataVolume1:/code/staticfiles
     ports:
       - 8000
     depends_on:
       - db
-  nginx:
-    build: ./nginx
-    volumes:
-      - static_volume:/code/staticfiles
-    ports:
-      - 1337:80
-    depends_on:
-      - web
 
 volumes:
   postgres_data:
-  static_volume:
+  DataVolume1:
+    external: true

@@ -14,4 +14,12 @@ then, go to nginx dirctory and execute the same
 
  sudo docker-compose up -d --build
 
+access the web container and execute migartions and user creation
+
+docker exec -it projectmgmt_web_1 /bin/bash
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+
 access the application on http://localhost:1337
